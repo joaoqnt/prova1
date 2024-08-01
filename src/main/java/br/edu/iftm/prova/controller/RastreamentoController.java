@@ -13,12 +13,12 @@ import br.edu.iftm.prova.repository.RastreamentoRepository;
 
 @RestController
 @RequestMapping("/rastreamentos")
-public class RastreamentoController {     
+public class RastreamentoController {
     @Autowired
     private RastreamentoRepository repository;
 
     @GetMapping("/{id}")
-    public List<Rastreamento> getById(@PathVariable Long id){
-        return repository.findAllById(id);
+    public List<Rastreamento> getById(@PathVariable Long id) {
+        return repository.findAllByPacote_id(id);
     }
 }
