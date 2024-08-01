@@ -25,7 +25,7 @@ import lombok.ToString;
 public class Pacote {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
     private String destinatario;
 
     @OneToOne(cascade = CascadeType.ALL)
