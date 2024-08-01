@@ -1,4 +1,4 @@
-package br.edu.repository;
+package br.edu.iftm.prova.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
