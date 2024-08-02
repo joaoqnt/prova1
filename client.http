@@ -1,139 +1,95 @@
-# Requisições HTTP
+### Teste de Endpoints para Pacote
 
-# Item de leilão
-# ----------------------------
+# Consultar todos os pacotes
+GET http://localhost:8080/pacotes
+Accept: application/json
 
-### Registrar lance a item de leilão
-POST /itemdeleilao/2 HTTP/1.1
-Host: localhost:8080
+###
+
+# Adicionar um novo pacote
+POST http://localhost:8080/pacotes
 Content-Type: application/json
 
 {
-	"valor":101.0,
-	"participante":{
-		"id":1
-	}
+  "id": "123456",
+  "destinatario": "João Silva",
+  "endereco": {
+    "rua": "Rua das Flores",
+    "numero": "123",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "cep": "12345-678"
+  },
+  "status": "pendente"
 }
 
+###
 
-### Encerrar leilão
-PATCH /itemdeleilao/1 HTTP/1.1
-Host: localhost:8080
-Content-Type: application/json
+# Consultar um pacote específico
+GET http://localhost:8080/pacotes/123456
+Accept: application/json
 
+###
 
-### Encerrar leilão
-POST /itemdeleilao/1 HTTP/1.1
-Host: localhost:8080
-Content-Type: application/json
-
-
-### Exclusão de item de leilão
-DELETE /itemdeleilao/1 HTTP/1.1
-Host: localhost:8080
-Content-Type: application/json
-
-### Busca de item de leilão
-GET /itemdeleilao/1 HTTP/1.1
-Host: localhost:8080
-Content-Type: application/json
-
-
-### Atualização de item de leilão
-PUT /itemdeleilao/1 HTTP/1.1
-Host: localhost:8080
+# Atualizar as informações de um pacote
+PUT http://localhost:8080/pacotes/123456
 Content-Type: application/json
 
 {
-	"nome": "bicicleta CALOI",
-	"valorMinimo": 100.0,
-	"leilaoAberto": true
+  "id": "123456",
+  "destinatario": "João Silva",
+  "endereco": {
+    "rua": "Rua das Flores",
+    "numero": "123",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "cep": "12345-678"
+  },
+  "status": "em trânsito"
 }
 
+###
 
-### Criação de item de leilão
-POST /itemdeleilao HTTP/1.1
-Host: localhost:8080
+# Remover um pacote
+DELETE http://localhost:8080/pacotes/123456
+
+### Teste de Endpoints para Rastreamento
+
+# Adicionar um novo rastreamento
+POST http://localhost:8080/rastreamentos
 Content-Type: application/json
 
 {
-	"nome": "cadeira",
-	"valorMinimo": 100.0,
-	"leilaoAberto": true
+  "dataHora": "2024-08-01T12:00:00",
+  "status": "em trânsito",
+  "localizacao": "Centro de Distribuição",
+  "pacote": {
+    "id": "123456"
+  }
 }
 
-### Listagem de itens de leilão
-GET /itemdeleilao HTTP/1.1
-Host: localhost:8080
-Content-Type: application/json
+###
 
-# Lance
-# ----------------------------
+# Consultar todos os rastreamentos de um pacote específico
+GET http://localhost:8080/rastreamentos/123456
+Accept: application/json
 
-### Exclusão de lance
-DELETE /lance/1 HTTP/1.1
-Host: localhost:8080
-Content-Type: application/json
+### Teste de Endpoints para Endereco
 
-### Busca de lance
-GET /lance/1 HTTP/1.1
-Host: localhost:8080
-Content-Type: application/json
+# Consultar todos os endereços
+GET http://localhost:8080/enderecos
+Accept: application/json
 
-### Atualização de lance
-PUT /lance/1 HTTP/1.1
-Host: localhost:8080
+###
+
+# Adicionar um novo endereço
+POST http://localhost:8080/enderecos
 Content-Type: application/json
 
 {
-	"valor": 100.0,
-	"participante": {
-		"id": 1
-	}
+  "rua": "Rua das Flores",
+  "numero": "123",
+  "cidade": "São Paulo",
+  "estado": "SP",
+  "cep": "12345-678"
 }
-
-### Listagem de lances
-GET /lance HTTP/1.1
-Host: localhost:8080
-Content-Type: application/json
-
-
-# Participante
-# ----------------------------
-
-### Exclusão de participante
-DELETE /participante/1 HTTP/1.1
-Host: localhost:8080
-Content-Type: application/json
-
-### Busca de participante
-GET /participante/1 HTTP/1.1
-Host: localhost:8080
-Content-Type: application/json
-
-### Atualização de participante
-PUT /participante/1 HTTP/1.1
-Host: localhost:8080
-Content-Type: application/json
-
-{
-	"nome": "João",
-	"cpf": "12345678901"
-}
-
-### Criação de participante
-POST /participante HTTP/1.1
-Host: localhost:8080
-Content-Type: application/json
-
-{
-	"nome": "Maria",
-	"cpf": "12345678901"
-}
-
-### Listagem de participantes
-GET /participante HTTP/1.1
-Host: localhost:8080
-Content-Type: application/json
-
-

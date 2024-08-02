@@ -17,11 +17,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
+@Entity
 public class Pacote {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
